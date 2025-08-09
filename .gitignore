@@ -1,0 +1,6 @@
+/buildSrc/build/groovy-dsl-plugins/work
+/buildSrc/build/groovy-dsl-plugins/output
+/buildSrc/.gradle/7.6.4
+/buildSrc/build
+/buildSrc/.gradle
+/build/tmp
