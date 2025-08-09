@@ -4,9 +4,12 @@ Employee service helps end to users to manager employee data.
 
 
 ## Approach
-1. I have used spring boot framework.
-2. I have used resillence4j and rest-template to call mock-server endpoints
-3. Swagger library is used to provide appropriate API documentation.
+
+1. Implemented the service using the Spring Boot framework.
+
+2. Utilized Resilience4j and RestTemplate for invoking mock-server endpoints.
+
+3. Integrated Swagger to generate comprehensive API documentation.
 
 ## Getting Started
 
@@ -70,27 +73,32 @@ A step by step series of examples that tell you how to get a development env run
 ./gradlew api:bootRun
 ```
 
-8. Check for successful start of application
+8. Check for successful start of application API server
 
 ```
 Tomcat started on port 8111 (http) with context path '/'
 ```
 
-## API details
+## API details for API server
 ```
 UI format: http://localhost:8111/swagger-ui/index.html
 
-API docs: http://localhost:8080/v2/api-docs
+API docs: http://localhost:8111/v2/api-docs
 
 ```
 ## Implementation details
 
-1. I have utilised the mock-server endpoints /api/v1/employee, /api/v1/employee/{id}, /api/v1/employee to handle getAllEmployees, getEmployeeById, createEmployee.
-2. I have added some filtering logic over /api/v1/employee response to address functionality getEmployeesByNameSearch, getHighestSalaryOfEmployees, getTop10HighestEarningEmployeeNames.
-3. To implement deleteEmployeeById, I have used /api/v1/employee/{id} to get name details of employee and call mock server endpoint /api/v1/employee/{name}.
-4. I have implemented a auto-retry 3 times for 5xx errors received from mock-server with exponential backoff.
-5. I have handled 429 error code returned by the mock server.
-6. I have gracefully handled error response from the mock server in api server.
+1. Utilized the mock-server endpoints /api/v1/employee, /api/v1/employee/{id}, and /api/v1/employee to implement getAllEmployees, getEmployeeById, and createEmployee.
+
+2. Added filtering logic on the /api/v1/employee response to support getEmployeesByNameSearch, getHighestSalaryOfEmployees, and getTop10HighestEarningEmployeeNames functionality.
+
+3. For deleteEmployeeById, first retrieved the employee’s name using /api/v1/employee/{id}, then invoked the mock-server endpoint /api/v1/employee/{name}.
+
+4. Implemented automatic retries (up to 3 attempts) for 5xx errors from the mock-server, using exponential backoff.
+
+5. Added handling for 429 (Too Many Requests) responses from the mock-server.
+
+6. Gracefully handled error responses from the mock-server within the API server.
 
 ## Code repository
 
